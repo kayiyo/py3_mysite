@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>OrderDelivery</title>
+    <style>
+    table td{ border: 1px solid #dedede; }
+    table{border-collapse: collapse;}
+    </style>
+</head>
+
+{#{% for mysql in mysql_list %}#}
+{#    <h2>{{ mysql.id }}</h2>#}
+{#    <p>{{ mysql.name }}</p>#}
+{#    <p>{{ mysql.type }}</p>#}
+{#    <p>{{ mysql.key }}</p>#}
+{#    <p>{{ mysql.xpath }}</p>#}
+{#    <p>{{ mysql.search_area }}</p>#}
+{#    <p>{{ mysql.move_point }}</p>#}
+{#{% endfor %}#}
+
+<body>
+
+<form>
+<table>
+  <thead>
+    <tr>
+        <caption>OrderNew</caption>
+        <td>id</td>
+        <td>name</td>
+        <td>type</td>
+        <td>key</td>
+        <td>xpath</td>
+        <td>search_area</td>
+        <td>move_point</td>
+    </tr>
+  </thead>
+    {% for mysql in mysql_list %}
+    <tbody>
+    <tr>
+
+        <td>{{ mysql.id }}</td>
+        <td>
+            <input type="text" name="name" value={{ mysql.name }}>
+        </td>
+
+        <td>
+            <Select onchange=mbar(this) name="select">
+                <OPTION selected>{{ mysql.type }}</OPTION>
+                <OPTION value="TYPE">TYPE</OPTION>
+                <OPTION value="TYPE_DATE">TYPE_DATE</OPTION>
+                <OPTION value="SELECT_RANDOM">SELECT_RANDOM</OPTION>
+                <OPTION value="SELECT">SELECT</OPTION>
+                <OPTION value="DATE">DATE</OPTION>
+                <OPTION value="CHOOSE">CHOOSE</OPTION>
+                <OPTION value="CLICK">CLICK</OPTION>
+                <OPTION value="READ_VALUE">READ_VALUE</OPTION>
+                <OPTION value="WRITE_TEMP">WRITE_TEMP</OPTION>
+                <OPTION value="UPDATE_TEMP">UPDATE_TEMP</OPTION>
+                <OPTION value="SNAPSHOT">SNAPSHOT</OPTION>
+            </Select>
+        </td>
+
+        <td>
+            <input type="text" name="key" value={{ mysql.key }}>
+        </td>
+
+        <td>
+            <input type="text" name="xpath" value={{ mysql.xpath }}>
+        </td>
+
+        <td>
+            <input type="text" name="search_area" value={{ mysql.search_area }}>
+        </td>
+
+        <td>
+            <input type="text" name="move_point" value={{ mysql.move_point }}>
+        </td>
+
+    </tr>
+    </tbody>
+    {% endfor %}
+
+<tfoot></tfoot>
+
+</table>
+<input type="submit" value="Submit">
+</form>>
+
+</body>
+</html>
