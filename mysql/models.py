@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 
 
 # Create your models here.
@@ -206,5 +207,44 @@ class ProcessType(models.Model):
     process = models.CharField(max_length=150)
     description = models.CharField(max_length=150, null=True)
 
+    class Meta:
+        verbose_name = 'ProcessType'
+        verbose_name_plural = '执行类型维护'
+
     def __str__(self):
-        return self.process
+        return self.description
+
+
+class OrderTestReport(models.Model):
+    RESULT_TYPE_LIST = (
+        ('Failed', '失败'),
+        ('Passed', '通过'),
+    )
+    title = models.CharField(max_length=150)      # 报告标题
+    location = models.CharField(max_length=150)        # 报告地址
+    result = models.CharField(max_length=150, choices=RESULT_TYPE_LIST)     # 报告结果
+    timestamp = models.DateTimeField()            # 创建时间
+    # color_code = models.CharField(max_length=6, default='green')
+    # exclude = ('color_code',)
+
+    def colored_result(self):
+        if self.result == 'Passed':
+            color_code = 'green'
+            self.result = '通过'
+        elif self.result == 'Failed':
+            color_code = 'red'
+            self.result = '失败'
+        return format_html(
+            '<span style="color: {};">{}</span>',
+            color_code,
+            self.result,
+        )
+    colored_result.short_description = '结果'
+    colored_result.allow_tags = True
+
+    class Meta:
+        verbose_name = 'OrderTestReport'
+        verbose_name_plural = '测试报告'
+
+    def __str__(self):
+        return self.location

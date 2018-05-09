@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from mysql.models import OrderNew
+from mysql.models import *
 
 
 # Create your views here.
