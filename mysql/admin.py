@@ -59,3 +59,7 @@ class OrderTestReportAdmin(admin.ModelAdmin):
     date_hierarchy = 'timestamp'
 
 admin.site.register(OrderTestReport, OrderTestReportAdmin)
+
+
+admin.site.site_header = '订单自动化测试系统'
+admin.site.site_title = '订单自动化测试系统'
