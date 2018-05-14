@@ -23,10 +23,10 @@ admin.site.register([OrderNew, ProjectManager, ProjectExecute,
 
 
 class ProcessTypeAdmin(admin.ModelAdmin):
-    list_display = ['id', 'process', 'description']
-    search_fields = ('type',)                               # 搜索字段
+    list_display = ['process', 'description']
+    search_fields = ['process', 'description']              # 搜索字段
     # ordering = ('id',)                                    # 排序 “-”为倒序
-    list_display_links = ('id', 'process', 'description',)   # 点击该字段可编辑
+    list_display_links = ('process', 'description',)        # 点击该字段可编辑
     # list_editable = ('process', 'description',)
 
 admin.site.register(ProcessType, ProcessTypeAdmin)
