@@ -203,6 +203,32 @@ class FinancialPayment(models.Model):
         verbose_name_plural = '[15]财务收款FinancialPayment'
 
 
+class RegisterWeb(models.Model):
+    name = models.CharField(max_length=150, null=True)  # 名称
+    type = models.ForeignKey('ProcessType', max_length=150, null=True, on_delete=models.SET_NULL)  # 类型
+    key = models.CharField(max_length=150, null=True)  # 类型
+    xpath = models.CharField(max_length=150, null=True)  # 定位信息
+    search_area = models.CharField(max_length=150, null=True)  # 搜索区域
+    move_point = models.CharField(max_length=150, null=True)  # 移动位置
+
+    class Meta:
+        verbose_name = 'RegisterWeb'
+        verbose_name_plural = '[16]门户注册RegisterWeb'
+
+
+class LoginWeb(models.Model):
+    name = models.CharField(max_length=150, null=True)  # 名称
+    type = models.ForeignKey('ProcessType', max_length=150, null=True, on_delete=models.SET_NULL)  # 类型
+    key = models.CharField(max_length=150, null=True)  # 类型
+    xpath = models.CharField(max_length=150, null=True)  # 定位信息
+    search_area = models.CharField(max_length=150, null=True)  # 搜索区域
+    move_point = models.CharField(max_length=150, null=True)  # 移动位置
+
+    class Meta:
+        verbose_name = 'LoginWeb'
+        verbose_name_plural = '[17]门户登录LoginWeb'
+
+
 class ProcessType(models.Model):
     process = models.CharField(max_length=150, primary_key=True)
     description = models.CharField(max_length=150, null=True)

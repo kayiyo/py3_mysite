@@ -11,3 +11,8 @@ def index(request):
 def mysql_index(request):
     mysql_list = OrderNew.objects.all()  # 获取所有数据
     return render(request,'mysql_index.html', {'mysql_list':mysql_list})   # 返回index.html页面
+
+
+def report(request):
+    report_list = OrderTestReport.objects.all()  # 获取所有数据
+    return render(request,'report.html', {'mysql_list':report_list})   # 返回report.html页面

@@ -19,6 +19,7 @@ admin.site.register([OrderNew, ProjectManager, ProjectExecute,
                      DeclarationNew, CheckIn, OperationIn,
                      ShipmentNotice, CheckSubmit, CheckOut,
                      OperationOut, LogisticsTrack, FinancialPayment,
+                     RegisterWeb, LoginWeb
                      ], OrderAdmin)
 
 
@@ -30,17 +31,6 @@ class ProcessTypeAdmin(admin.ModelAdmin):
     # list_editable = ('process', 'description',)
 
 admin.site.register(ProcessType, ProcessTypeAdmin)
-
-
-# class OrderTestReportAdmin(admin.ModelAdmin):
-#     list_display = ['id', 'title', 'location', 'result', 'timestamp']
-#     search_fields = ('result', 'timestamp')                                 # 搜索字段
-#     # ordering = ('id',)                                                    # 排序 “-”为倒序
-#     list_filter = ('result', 'timestamp')  # 过滤器
-#     readonly_fields = ('id', 'title', 'location', 'result', 'timestamp')        # 点击该字段可编辑
-#     date_hierarchy = 'timestamp'
-#
-# admin.site.register(OrderTestReport, OrderTestReportAdmin)
 
 
 class OrderTestReportAdmin(admin.ModelAdmin):
@@ -59,7 +49,6 @@ class OrderTestReportAdmin(admin.ModelAdmin):
     date_hierarchy = 'timestamp'
 
 admin.site.register(OrderTestReport, OrderTestReportAdmin)
-
 
 admin.site.site_header = '订单自动化测试系统'
 admin.site.site_title = '订单自动化测试系统'

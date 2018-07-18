@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 from django.conf.urls.static import static
 from blog import views as blog_views
 from mysql import views as mysql_views
@@ -26,11 +26,12 @@ urlpatterns = [
     path('', blog_views.index),
     path('blog/', blog_views.blog_index),
     path('home/', blog_views.blog_home),
-    path('add/', blog_views.add, name='add'),
+    path('add/', blog_views.add2, name='add2'),
     path('add/<int:a>/<int:b>/', blog_views.add2, name='add2'),
     path('add_home/', blog_views.add_index),
 
     path('order', mysql_views.mysql_index),
+    path('report', mysql_views.report),
 
     path('ckeditor/', include('ckeditor_uploader.urls')),
 ]

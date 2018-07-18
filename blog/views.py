@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from blog.models import BlogsPost
-
+import re
 
 # Create your views here.
 def index(request):
@@ -20,9 +20,20 @@ def blog_home(request):
 
 def add(request):
     # a = request.GET['a']
-    a = request.GET.get('a',0)
+    a = request.GET.get('a', 0)
     # b = request.GET['b']
     b = request.GET.get('b', 0)
+    a = re.sub("[^0-9]", "", a)
+    matcha = re.match('[0-9]*', a, re.M | re.I)
+    if matcha:
+        a = re.sub("[^0-9]", "", a)
+    else:
+        a = 0
+    matchb = re.match('[0-9]*', b, re.M | re.I)
+    if matchb:
+        b = re.sub("[^0-9]", "", b)
+    else:
+        b = 0
     c = int(a)+int(b)
     return HttpResponse(str(c))
 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'blog',
     'mysql',
+    'dao',
 ]
 
 MIDDLEWARE = [
